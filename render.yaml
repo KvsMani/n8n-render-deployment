@@ -28,15 +28,6 @@ services:
         value: password123
 
   - type: web
-    name: baserow
-    env: docker
-    rootDir: baserow
-    plan: free
-    envVars:
-      - key: BASEROW_PUBLIC_URL
-        value: https://baserow.onrender.com/
-
-  - type: web
     name: kokoro-tts
     env: docker
     rootDir: kokoro-tts-cpu
