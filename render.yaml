@@ -1,0 +1,62 @@
+services:
+  - type: web
+    name: n8n-service
+    env: docker
+    rootDir: n8n
+    plan: free
+    envVars:
+      - key: N8N_DEFAULT_BINARY_DATA_MODE
+        value: filesystem
+      - key: WEBHOOK_URL
+        value: https://n8n-service.onrender.com/
+      - key: N8N_BASIC_AUTH_ACTIVE
+        value: true
+      - key: N8N_BASIC_AUTH_USER
+        value: admin
+      - key: N8N_BASIC_AUTH_PASSWORD
+        value: securepassword
+
+  - type: web
+    name: minio
+    env: docker
+    rootDir: minio
+    plan: free
+    envVars:
+      - key: MINIO_ROOT_USER
+        value: admin
+      - key: MINIO_ROOT_PASSWORD
+        value: password123
+
+  - type: web
+    name: baserow
+    env: docker
+    rootDir: baserow
+    plan: free
+    envVars:
+      - key: BASEROW_PUBLIC_URL
+        value: https://baserow.onrender.com/
+
+  - type: web
+    name: kokoro-tts
+    env: docker
+    rootDir: kokoro-tts-cpu
+    plan: free
+
+  - type: web
+    name: nca-toolkit
+    env: docker
+    rootDir: nca-toolkit
+    plan: free
+    envVars:
+      - key: API_KEY
+        value: thekey
+      - key: S3_ENDPOINT_URL
+        value: https://minio.onrender.com
+      - key: S3_ACCESS_KEY
+        value: <your-minio-access-key>
+      - key: S3_SECRET_KEY
+        value: <your-minio-secret-key>
+      - key: S3_BUCKET_NAME
+        value: nca-toolkit
+      - key: S3_REGION
+        value: None

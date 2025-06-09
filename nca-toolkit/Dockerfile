@@ -1,0 +1,1 @@
+FROM stephengpope/no-code-architects-toolkit:latest
